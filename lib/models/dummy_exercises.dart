@@ -1,3 +1,5 @@
+//this is the dummy exercises and routines added by me for reference
+
 import 'package:nirvana/models/exercises.dart';
 import 'package:flutter/material.dart';
 import 'package:nirvana/models/routines.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/material.dart';
-import 'package:nirvana/exercises_screen.dart';
-import 'package:nirvana/homePage.dart';
+import 'package:nirvana/screens/exercises_screen.dart';
+import 'package:nirvana/screens/homePage.dart';
 
 class RoutineItem extends StatelessWidget {
   final String id;
@@ -11,7 +11,7 @@ class RoutineItem extends StatelessWidget {
   final Color color;
 
   RoutineItem(this.id, this.title, this.color);
-
+// takes the arguments to show the exercises of selected routines
   void SelectCategory(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(exercisesScreen.routeName, arguments: {
       'id': id,
@@ -19,6 +19,7 @@ class RoutineItem extends StatelessWidget {
     });
   }
 
+//styling how my routines will look making them all clickable
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -27,9 +28,13 @@ class RoutineItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: Container(
         padding: const EdgeInsets.all(15),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium,
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            // Theme.of(context).textTheme.titleMedium,)
+            textAlign: TextAlign.center,
+          ),
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

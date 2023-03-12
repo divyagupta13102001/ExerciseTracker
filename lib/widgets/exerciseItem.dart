@@ -1,25 +1,36 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:nirvana/exercises_screen.dart';
-import 'models/exercises.dart';
-import 'dummy_exercises.dart';
+import 'package:nirvana/screens/exercises_screen.dart';
+import 'package:nirvana/timer.dart';
+import '../models/exercises.dart';
+import '../models/dummy_exercises.dart';
 
-class exerciseItem extends StatelessWidget {
+class exerciseItem extends StatefulWidget {
   final String id;
   final String title;
   final int repetitions;
   final String duration;
   final String routine;
+  bool isCompelete;
 
-  void selectExercise() {}
   exerciseItem({
     required this.id,
     required this.title,
     required this.repetitions,
     required this.duration,
     required this.routine,
+    this.isCompelete = false,
   });
+
+  @override
+  State<exerciseItem> createState() => _exerciseItemState();
+}
+
+class _exerciseItemState extends State<exerciseItem> {
+  void selectExercise() {}
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +44,9 @@ class exerciseItem extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              title,
+              widget.title,
               style: TextStyle(
-                fontSize: 26,
+                fontSize: 20,
                 color: Colors.black,
               ),
               // softWrap: true,
@@ -52,7 +63,7 @@ class exerciseItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$duration')
+                      Text('${widget.duration}')
                     ],
                   ),
                   Row(
@@ -61,9 +72,25 @@ class exerciseItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$repetitions')
+                      Text('${widget.repetitions}')
                     ],
                   ),
+                  // Container(
+                  //   height: 20,
+                  //   child: CountdownTimer(),
+                  // ),
+                  Row(
+                    children: <Widget>[
+                      Checkbox(
+                          value: widget.isCompelete,
+                          onChanged: (value) {
+                            setState(() {
+                              widget.isCompelete = value!;
+                              Text('Compeleted!');
+                            });
+                          })
+                    ],
+                  )
                 ],
               ),
             ),

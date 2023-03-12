@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+//allowing user to add new exercises
 class newExercises extends StatefulWidget {
   final Function addEx;
   final String id;
@@ -19,14 +20,13 @@ class _newExercisesState extends State<newExercises> {
   final Titlecontroller = TextEditingController();
   final repeatcontroller = TextEditingController();
   final durationcontroler = TextEditingController();
-  final routinecontroller = TextEditingController();
 
   void submitData() {
     final enteredid = idcontroller.text;
     final enteredtitle = Titlecontroller.text;
     final enteredRepeat = int.parse(repeatcontroller.text);
     final enterduration = durationcontroler.text;
-    // final enterroutine = routinecontroller.text;
+
     if (enteredtitle.isEmpty || enteredid.isEmpty) {
       return;
     }
@@ -66,11 +66,6 @@ class _newExercisesState extends State<newExercises> {
               TextField(
                 decoration: InputDecoration(labelText: 'Duration'),
                 controller: durationcontroler,
-                onSubmitted: (_) => submitData(),
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: 'RoutineId'),
-                controller: routinecontroller,
                 onSubmitted: (_) => submitData(),
               ),
               ElevatedButton(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:nirvana/dummy_exercises.dart';
-import 'package:nirvana/exerciseItem.dart';
+import 'package:nirvana/models/dummy_exercises.dart';
+import 'package:nirvana/widgets/exerciseItem.dart';
 import 'package:nirvana/models/exercises.dart';
 import 'package:nirvana/models/routines.dart';
 import 'package:nirvana/newExercises.dart';
@@ -16,6 +16,7 @@ class exercisesScreen extends StatefulWidget {
   State<exercisesScreen> createState() => _exercisesScreenState();
 }
 
+//function to add new exercices to a routine
 class _exercisesScreenState extends State<exercisesScreen> {
   void _addNewExercises(String eid, String etitle, int erepetitions,
       String eduration, String eroutine) {
